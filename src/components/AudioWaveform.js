@@ -193,21 +193,15 @@ const AudioWaveform = () => {
 				new_buffer.copyToChannel(combined, 0);
 
 				// load the new_buffer, to restart the wavesurfer's waveform display
+				
 				wavesurferObj.loadDecodedBuffer(new_buffer);
+				
+				saveAs(fileURL,  wavesurferObj.loadDecodedBuffer(new_buffer)); 
 			}
 		}
 	};
 	
-	const DownloadFile = () => {
-		const region =
-				wavesurferObj.regions.list[
-					Object.keys(wavesurferObj.regions.list)[0]
-				];
-				saveAs(
-					{region}
-				  );
-			}
-	
+
 
 	return (
 		<section className='waveform-container'>
@@ -267,12 +261,12 @@ const AudioWaveform = () => {
 							className='slider volume-slider'
 						/>
 					</div>
-					<button
+					{/* <button
 						title='reload'
 						className='controls'
 						onClick={DownloadFile}>
 						<i class="fa-solid fa-floppy-disk" style={{ color: 'Black' , fontSize: "30px"}}></i>
-					</button>
+					</button> */}
 				</div>
 			</div>
 		</section>
