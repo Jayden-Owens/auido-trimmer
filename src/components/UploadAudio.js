@@ -25,7 +25,7 @@ const UploadAudio = ({ history }) => {
 
 	return (
 		<div className='upload-audio'>
-			<i class="fa-solid fa-file-arrow-up" style={{ color: 'Black' , fontSize: "100px"}}></i>
+			<i class="fa-solid fa-file-arrow-up" style={{ color: '#E44C8D' , fontSize: "100px"}}></i>
 			<h1>Upload your audio file here</h1>
 			<button className='upload-btn' onClick={handleButtonClick}>
 				Upload

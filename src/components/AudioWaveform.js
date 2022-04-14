@@ -215,25 +215,25 @@ const AudioWaveform = () => {
 						className='controls'
 						onClick={handlePlayPause}>
 						{playing ? (
-							<i class="fa-solid fa-pause" style={{ color: 'Black' , fontSize: "30px"}}></i>
+							<i class="fa-solid fa-pause" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 						) : (
-							<i class="fa-solid fa-play" style={{ color: 'Black' , fontSize: "30px"}}></i>
+							<i class="fa-solid fa-play" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 						)}
 					</button>
 					<button
 						title='reload'
 						className='controls'
 						onClick={handleReload}>
-						<i class="fa-solid fa-reply" style={{ color: 'Black' , fontSize: "30px"}}></i>
+						<i class="fa-solid fa-reply" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 					</button>
 					<button onClick={handleTrim}>
-					<i class="fa-solid fa-scissors" style={{ color: 'Black' , fontSize: "30px"}}></i>
+					<i class="fa-solid fa-scissors" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 					</button>
 				</div>
 				<div className='right-container'>
 					<div className='volume-slide-container'>
 					
-					<i class="fa-solid fa-magnifying-glass-minus" style={{ color: 'Black' , fontSize: "30px"}}></i>
+					<i class="fa-solid fa-magnifying-glass-minus" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 						<input
 							type='range'
 							min='1'
@@ -242,13 +242,13 @@ const AudioWaveform = () => {
 							onChange={handleZoomSlider}
 							class='slider zoom-slider'
 						/>
-						<i class="fa-solid fa-magnifying-glass-plus" style={{ color: 'Black' , fontSize: "30px"}}></i>
+						<i class="fa-solid fa-magnifying-glass-plus" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 					</div>
 					<div className='volume-slide-container'>
 						{volume > 0 ? (
-							<i class="fa-solid fa-volume-high" style={{ color: 'Black' , fontSize: "30px"}}></i>
+							<i class="fa-solid fa-volume-high" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 						) : (
-							<i class="fa-solid fa-volume-off" style={{ color: 'Black' , fontSize: "30px"}}></i>
+							<i class="fa-solid fa-volume-off" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
 
 						)}
 						<input
