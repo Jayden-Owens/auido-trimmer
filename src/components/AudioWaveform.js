@@ -5,12 +5,12 @@ import { FileContext } from '../contexts/fileContext';
 import wavesurfer from 'wavesurfer.js';
 import ToggleButton from './ToggleButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { saveAs } from "file-saver";
+import FileSaver, { saveAs } from "file-saver";
 
 const AudioWaveform = () => {
 	const wavesurferRef = useRef(null);
 	const timelineRef = useRef(null);
-
+	const [file, setFile] = useState(null);
 	// fetch file url from the context
 	const { fileURL, setFileURL } = useContext(FileContext);
 
@@ -30,10 +30,11 @@ const AudioWaveform = () => {
 					container: '#waveform',
 					scrollParent: true,
 					autoCenter: true,
-					cursorColor: 'violet',
+					cursorColor: '#E44C8D',
 					loopSelection: true,
-					waveColor: '#211027',
-					progressColor: '#69207F',
+					waveColor: '#E44C8D',
+					progressColor: 'black',
+					Backroundcolor: "blue",
 					responsive: true,
 					plugins: [
 						TimelinePlugin.create({
@@ -82,6 +83,12 @@ const AudioWaveform = () => {
 			});
 		}
 	}, [wavesurferObj]);
+	useEffect(() => {
+		if (file) {
+			setFileURL(file);
+			setFileURL.createObjectURL(file)
+		}
+	}, [file, setFileURL]);
 
 	// set volume of the wavesurfer object, whenever volume variable in state is changed
 	useEffect(() => {
@@ -193,20 +200,25 @@ const AudioWaveform = () => {
 				new_buffer.copyToChannel(combined, 0);
 
 				// load the new_buffer, to restart the wavesurfer's waveform display
-				
+
 				wavesurferObj.loadDecodedBuffer(new_buffer);
 				
-				saveAs(fileURL,  wavesurferObj.loadDecodedBuffer(new_buffer)); 
+				var blob = new Blob([{new_buffer}], {type: "audio/wav"});
+				
+					
+					saveAs(blob, "Demo.mp3", wavesurferObj.loadDecodedBuffer(new_buffer));
+				  
 			}
 		}
-	};
-	
+	};	
 
+	const Download = (e) => {
+	}
 
 	return (
 		<section className='waveform-container'>
 			<div ref={wavesurferRef} id='waveform' />
-			<div ref={timelineRef} id='wave-timeline' />
+			<div ref={timelineRef} id='wave-timeline' style={{backgroundColor: '#E44C8D'}} />
 			<div className='all-controls'>
 				<div className='left-container'>
 					<ToggleButton />
@@ -261,12 +273,12 @@ const AudioWaveform = () => {
 							className='slider volume-slider'
 						/>
 					</div>
-					{/* <button
+					<button
 						title='reload'
 						className='controls'
-						onClick={DownloadFile}>
-						<i class="fa-solid fa-floppy-disk" style={{ color: 'Black' , fontSize: "30px"}}></i>
-					</button> */}
+						onClick={Download}>
+						<i class="fa-solid fa-floppy-disk" style={{ color: '#E44C8D' , fontSize: "30px"}}></i>
+					</button>
 				</div>
 			</div>
 		</section>
