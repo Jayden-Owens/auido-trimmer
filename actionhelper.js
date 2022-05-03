@@ -19,7 +19,7 @@ function showAndHideMergeOption() {
 function createAudioRow(arr) {
 	var tableRow = document.createElement("tr");
 	tableRow.setAttribute("id", arr[0]);
-	tableRow.setAttribute("class", "w3-hover-text-green");
+	tableRow.setAttribute("class", "w3-hover-text-pink");
 	//tableRow.setAttribute("onmouseover", "highlightRegion('over','"+arr[0]+"')");
 	//tableRow.setAttribute("onmouseleave", "highlightRegion('leave','"+arr[0]+"')");
 	for(var i in arr){
@@ -45,7 +45,7 @@ function createAudioRow(arr) {
 		tableData.setAttribute("id", arr[0]+"-"+actionsArray[i].action);
 		var dataIcon = document.createElement("button");
 		dataIcon.setAttribute("title", actionsArray[i].action);
-		dataIcon.setAttribute("class", actionsArray[i].iconClass+" w3-button w3-white w3-border w3-border-light-green w3-round-large");
+		dataIcon.setAttribute("class", actionsArray[i].iconClass+" w3-button w3-white w3-border-pink w3-border w3-round-large");
 		dataIcon.setAttribute("id", arr[0]+"-"+actionsArray[i].iconClass);
 		dataIcon.setAttribute("onClick", actionsArray[i].action+"Track('"+arr[0].toString()+"')"); 	
 		tableData.appendChild(dataIcon);
@@ -58,7 +58,7 @@ function createAudioRow(arr) {
 function highlightRegion(eventName, regionId) {
 	var region = wavesurfer.regions.list[regionId];
 	if(eventName == "over") {
-		region.color = "rgba(0, 255, 0, 0.1)";
+		region.color = "#f84672";
 	} else {
 		wavesurfer.regions.list[regionId].color = "rgba(0, 0, 0, 0.1)";
 	}
